@@ -1,8 +1,10 @@
 fun main(args: Array<String>) {
-    val x = 3
-    val y = 4
+    var x = 1
 
-
-    println(if(x<y) "x is smaller" else "x is bigger")
-    println("this line runs no matter what")
+    while (x<3){
+        print(if (x==1) "Yab" else "Dab" )
+        print("ba")
+        x+=1
+    }
+    if (x==3) println("Do")
 }
