@@ -1,10 +1,10 @@
 fun main(args: Array<String>) {
-    var x = 1
+    var x: Short = 1
 
-    while (x<3){
-        print(if (x==1) "Yab" else "Dab" )
+    while (x.toInt() < 3){
+        print(if (x.toInt() == 1) "Yab" else "Dab" )
         print("ba")
-        x+=1
+        x++
     }
-    if (x==3) println("Do")
+    if (x.toInt()==3) println("Do")
 }
