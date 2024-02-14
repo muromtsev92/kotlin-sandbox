@@ -1,18 +1,16 @@
 fun main(args: Array<String>) {
-    val words1 = arrayOf("24/7", "multi-tier", "B-to-B", "dynamic", "pervasive")
-    val words2 = arrayOf("empowered", "leveraged", "aligned", "targeted")
-    val words3 = arrayOf("process", "paradigm", "solution", "portal", "vision")
-
-    val arrSize1 = words1.size
-    val arrSize2 = words2.size
-    val arrSize3 = words3.size
-
-    val index1 = (Math.random() * arrSize1).toInt()
-    val index2 = (Math.random() * arrSize2).toInt()
-    val index3 = (Math.random() * arrSize3).toInt()
-
-    val phrase = "${words1[index1]} ${words2[index2]} ${words3[index3]}"
-
-    var bobik = Dog("bobik", 50, "mixed")
-    println(bobik.bark())
+    val myDog = Dog("Fido", 70, "Mixed")
+    myDog.bark()
+    myDog.weight = 75
+    println("Weight in Kgs is ${myDog.weightInKgs}")
+    myDog.weight = -2
+    println("Weight is ${myDog.weight}")
+    myDog.activities = arrayOf("Walks", "Fetching balls", "Frisbee")
+    for (item in myDog.activities) {
+        println("My dog enjoys $item")
+    }
+    val dogs = arrayOf(Dog("Kelpie", 20, "Westie"), Dog("Ripper", 10, "Poodle"))
+    dogs[1].bark()
+    dogs[1].weight = 15
+    println("Weight for ${dogs[1].name} is ${dogs[1].weight}")
 }
