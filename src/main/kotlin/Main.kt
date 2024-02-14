@@ -13,5 +13,6 @@ fun main(args: Array<String>) {
 
     val phrase = "${words1[index1]} ${words2[index2]} ${words3[index3]}"
 
-    println(phrase)
+    var bobik = Dog("bobik", 50, "mixed")
+    println(bobik.bark())
 }
