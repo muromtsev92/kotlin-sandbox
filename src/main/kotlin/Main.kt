@@ -11,4 +11,7 @@ fun main(args: Array<String>) {
     val hippo = Hippo()
     vet.giveShot(wolf)
     vet.giveShot(hippo)
+    val s1 = Song("null", "agytin")
+    val s2 = Song("null", "agytin")
+    println(s1 == s2)
 }

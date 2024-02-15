@@ -1,4 +1,4 @@
-class Song(val title: String, val artist: String) {
+data class Song(val title: String, val artist: String) {
     fun play(): String {
         return "playing the song $title by $artist"
     }
