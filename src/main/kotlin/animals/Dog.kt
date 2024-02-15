@@ -1,7 +1,9 @@
+package animals
+
 class Dog (val name: String, var weight_param: Int, val breed_param: String){
 
     init{
-        println("Dog $name has been created")
+        println("animals.Dog $name has been created")
     }
 
     var activities = arrayOf("Walking")
@@ -21,6 +23,6 @@ class Dog (val name: String, var weight_param: Int, val breed_param: String){
 
 
     fun bark(): String {
-        if (weight<20) return "Yip!" else return "Woof!"
+        return if (weight<20) "Yip!" else "Woof!"
     }
 }
