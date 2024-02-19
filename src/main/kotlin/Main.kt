@@ -1,29 +1,31 @@
-import animals.*
+
+import generics.*
+import generics.retailers.*
 
 fun main(args: Array<String>) {
-    val animals = arrayOf(Hippo(), Wolf())
-    for (item in animals) {
-        item.roam()
-        item.eat()
-    }
-    val vet = Vet()
-    val wolf = Wolf()
-    val hippo = Hippo()
-    vet.giveShot(wolf)
-    vet.giveShot(hippo)
-    val s1 = Song("null", "agytin")
-    val s2 = Song("null", "agytin")
-    println(s1 == s2)
-    var arr = intArrayOf(1,2,1)
-    println(longestCommonPrefix(arrayOf("flower","flight")))
-    println(longestCommonPrefix(arrayOf("ab","a")))
+    val catBarsik = Cat("Barsik")
+    val catKatsuba = Cat("Katsuba")
+    val fishFinny = Fish("Finny")
 
-}
+    var catDoc = Doctor<Cat>()
+    var petDoc = Doctor<Pet>()
 
-fun longestCommonPrefix(strs: Array<String>): String {
-    var current = strs[0]
-    for (i in 0..strs.size-2) {
-        current = current.commonPrefixWith(strs[i+1])
-    }
-    return current
+    val catContest = Contest<Cat>(petDoc)
+    catContest.addScore(catBarsik, 120)
+    catContest.addScore(catKatsuba, 180)
+    val topCat = catContest.getWinners().first()
+    petDoc.treat(catKatsuba)
+    println("Cat contest winner is ${topCat.name}")
+
+    val petContest = Contest<Pet>(petDoc)
+    petContest.addScore(catBarsik, 50)
+    petContest.addScore(fishFinny, 56)
+    val topPet = petContest.getWinners().first()
+    petDoc.treat(fishFinny)
+    println("Pet contest winner is ${topPet.name}")
+
+    val dogRetailer: Retailer<Dog> = DogRetailer()
+    val catRetailer: Retailer<Cat> = CatRetailer()
+    val petRetailer: Retailer<Pet> = CatRetailer()
+    petRetailer.sell()
 }
