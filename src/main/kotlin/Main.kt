@@ -1,3 +1,4 @@
+@file:Suppress("UNUSED_EXPRESSION")
 
 import generics.*
 import generics.retailers.*
@@ -28,4 +29,14 @@ fun main(args: Array<String>) {
     val catRetailer: Retailer<Cat> = CatRetailer()
     val petRetailer: Retailer<Pet> = CatRetailer()
     petRetailer.sell()
+
+    val action = {x: Int -> x + 7}
+    println(action(12))
+
+    val iterator = {it: String -> it.replace("abc", "ABC")}
+
+    var list = mutableListOf("abc1abc", "abc-null-abc", "abcabcabc")
+    for(s in list){
+        println(iterator(s))
+    }
 }
