@@ -1,31 +1,25 @@
 
-import generics.*
-import generics.retailers.*
-
 fun main(args: Array<String>) {
-    val catBarsik = Cat("Barsik")
-    val catKatsuba = Cat("Katsuba")
-    val fishFinny = Fish("Finny")
+    var addFive = {x: Int -> x+5}
+    println("Add five to 11 is ${addFive(11)}")
 
-    var catDoc = Doctor<Cat>()
-    var petDoc = Doctor<Pet>()
+    val sumInt = {x: Int, y: Int -> x + y}
+    println("Sum of 5 and 6 is ${sumInt(5,6)}")
 
-    val catContest = Contest<Cat>(petDoc)
-    catContest.addScore(catBarsik, 120)
-    catContest.addScore(catKatsuba, 180)
-    val topCat = catContest.getWinners().first()
-    petDoc.treat(catKatsuba)
-    println("Cat contest winner is ${topCat.name}")
+    convert(5.0) { it * 1.8 + 32 }
+    convertFive { it * 1.8 + 32 }
 
-    val petContest = Contest<Pet>(petDoc)
-    petContest.addScore(catBarsik, 50)
-    petContest.addScore(fishFinny, 56)
-    val topPet = petContest.getWinners().first()
-    petDoc.treat(fishFinny)
-    println("Pet contest winner is ${topPet.name}")
+}
 
-    val dogRetailer: Retailer<Dog> = DogRetailer()
-    val catRetailer: Retailer<Cat> = CatRetailer()
-    val petRetailer: Retailer<Pet> = CatRetailer()
-    petRetailer.sell()
+fun convert(x: Double,
+            converter: (Double) -> Double): Double{
+    val result = converter(x)
+    println("$x converted to $result")
+    return result
+}
+
+fun convertFive(converter: (Int) -> Double): Double {
+    val result = converter(5)
+    println("5 is converted to $result")
+    return result
 }
