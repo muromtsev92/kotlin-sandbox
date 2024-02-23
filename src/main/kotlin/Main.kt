@@ -18,10 +18,26 @@ fun main(args: Array<String>) {
         Grocery("Ice cream", "Frozen", "Pack", 3.0, 2)
     )
 
-    println(groceries.filter { it.category == "Vegetable" })
+    val vegetables = groceries.filter{ it.category == "Vegetable"}
+    println("vegetables: $vegetables")
+
+    val notFrozen = groceries.filterNot { it.category == "Frozen" }.map {it.name}
+    println("not frozen: $notFrozen")
+
+    val groceryNames = groceries.map { it.name } //проходит по всем объектам, берет от каждого имя и кладет в список
+    println("grocery names: $groceryNames")
+
+    val halfPrices = groceries.map { it.unitPrice * 0.5 }
+    println("half prices: $halfPrices")
+
+    val newPrices = groceries.filter { it.unitPrice > 3.0 }
+        .map { it.unitPrice * 2 }
+    println("new prices: $newPrices")
 
 
-
+    print("Costs < 3.0: ")
+    val fewer3 = groceries.filter { it.unitPrice < 3.0 }
+        .forEach { print(it.name) }
 }
 
 fun convert(
