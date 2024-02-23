@@ -37,7 +37,15 @@ fun main(args: Array<String>) {
 
     print("Costs < 3.0: ")
     val fewer3 = groceries.filter { it.unitPrice < 3.0 }
-        .forEach { print(it.name) }
+        .forEach { println(it.name) }
+
+
+
+    groceries.groupBy { it.category }.forEach{
+        println(it.key)
+        it.value.forEach { println("    ${it.name}") }
+    }
+
 }
 
 fun convert(
