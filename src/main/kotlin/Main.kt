@@ -1,14 +1,6 @@
 import collections.Grocery
 
 fun main(args: Array<String>) {
-//    var addFive = {x: Int -> x+5}
-//    println("Add five to 11 is ${addFive(11)}")
-//
-//    val sumInt = {x: Int, y: Int -> x + y}
-//    println("Sum of 5 and 6 is ${sumInt(5,6)}")
-//
-//    convert(5.0) { it * 1.8 + 32 }
-//    convertFive { it * 1.8 + 32 }
 
     val groceries = listOf(
         Grocery("Tomatoes", "Vegetable", "lb", 3.0, 3),
