@@ -38,6 +38,8 @@ fun main(args: Array<String>) {
         it.value.forEach { println("    ${it.name}") }
     }
 
+    println(checkIfPangram("thequickbrownfoxjumpsoverthelazydog"))
+
 }
 
 fun convert(
@@ -53,4 +55,17 @@ fun convertFive(converter: (Int) -> Double): Double {
     val result = converter(5)
     println("5 is converted to $result")
     return result
+}
+
+fun checkIfPangram(sentence: String): Boolean {
+    var map = mutableMapOf<Char, Boolean>()
+    for(c in 'a'.rangeTo('z')){
+        map[c] = false
+    }
+    for(i in sentence.indices){
+        if(!map[sentence[i]]!!){
+            map[sentence[i]] = true
+        }
+    }
+    return !map.values.contains(false)
 }
