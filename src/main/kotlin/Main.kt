@@ -37,6 +37,7 @@ fun main(args: Array<String>) {
         println(it.key)
         it.value.forEach { println("    ${it.name}") }
     }
+    println(differenceOfSum(intArrayOf(1,15,6,3)))
 
 }
 
@@ -53,4 +54,25 @@ fun convertFive(converter: (Int) -> Double): Double {
     val result = converter(5)
     println("5 is converted to $result")
     return result
+}
+
+
+fun differenceOfSum(nums: IntArray): Int {
+    var sumN = 0
+    var sumD = 0
+    for (num in nums){
+        sumN += num
+        var j = 0
+        if (num < 10) sumD += num
+        var numC = num
+        while(numC>10){
+            j += numC % 10
+            numC /= 10
+            if(numC < 10){
+                j += numC
+            }
+        }
+        sumD += j
+    }
+    return sumN - sumD
 }
