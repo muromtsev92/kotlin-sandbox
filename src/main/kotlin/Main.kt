@@ -1,4 +1,5 @@
 import collections.Grocery
+import kotlin.math.pow
 
 fun main(args: Array<String>) {
 
@@ -37,7 +38,8 @@ fun main(args: Array<String>) {
         println(it.key)
         it.value.forEach { println("    ${it.name}") }
     }
-    println(differenceOfSum(intArrayOf(1,15,6,3)))
+
+    println(checkIfPangram("thequickbrownfoxjumpsoverthelazydog"))
 
 }
 
@@ -56,23 +58,56 @@ fun convertFive(converter: (Int) -> Double): Double {
     return result
 }
 
-
-fun differenceOfSum(nums: IntArray): Int {
-    var sumN = 0
-    var sumD = 0
-    for (num in nums){
-        sumN += num
-        var j = 0
-        if (num < 10) sumD += num
-        var numC = num
-        while(numC>10){
-            j += numC % 10
-            numC /= 10
-            if(numC < 10){
-                j += numC
-            }
-        }
-        sumD += j
+fun checkIfPangram(sentence: String): Boolean {
+    var map = mutableMapOf<Char, Boolean>()
+    for(c in 'a'.rangeTo('z')){
+        map[c] = false
     }
-    return sumN - sumD
+    for(i in sentence.indices){
+        if(!map[sentence[i]]!!){
+            map[sentence[i]] = true
+        }
+    }
+    return !map.values.contains(false)
+}
+
+fun reverse1(x: Int): Int {
+    var numC = x
+    var digits = arrayListOf<Int>()
+    while(numC>10){
+        digits.add(numC % 10)
+        numC /= 10
+        if(numC < 10){
+            digits.add(numC)
+        }
+    }
+    println(digits)
+    var res = 0.0
+    var i = digits.size - 1
+    var j = 0
+    while (i >= 0){
+        res += digits[j].toDouble() * 10.0.pow(i.toDouble())
+        i--
+        j++
+    }
+    println(res.toInt())
+    if(x<0) res *= -1
+    if(res>2.0.pow(31)*-1 || res<2.0.pow(-31) - 1) return 0
+    return res.toInt()
+}
+
+fun reverse(x: Int): Int{
+    val positiveValue: String
+    val sign = if (x < 0) {
+        positiveValue = x.toString().drop(1)
+        "-"
+    } else {
+        positiveValue = x.toString()
+        ""
+    }
+    val res = positiveValue.reversed()
+    if (((-2.0).pow(31) <= res.toLong() && res.toLong() <= 2.0.pow(31) - 1).not()) {
+        return 0
+    }
+    return (sign + res).toInt()
 }
