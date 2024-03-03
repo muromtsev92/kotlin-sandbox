@@ -113,7 +113,7 @@ fun reverse(x: Int): Int{
     return (sign + res).toInt()
 }
 
-fun romanToInt(s: String): Int =
+fun romanToInt2(s: String): Int =
     s.mapIndexed { index, c ->
         when (c) {
             'I' -> if ("VX".contains(s.getOrNull(index + 1) ?: ' ')) -1 else 1
@@ -126,3 +126,30 @@ fun romanToInt(s: String): Int =
             else -> throw IllegalArgumentException("$c is not valid")
         }
     }.sum()
+
+fun romanToInt(s: String): Int {
+    val romanNumerals = mapOf('I' to 1,
+        'V' to 5,
+        'X' to 10,
+        'L' to 50,
+        'C' to 100,
+        'D' to 500,
+        'M' to 1000)
+
+    var result = 0
+
+    for (i in s.indices) {
+        val currValue = romanNumerals.getValue(s[i])
+        if (i + 1 != s.length) {
+            val nextValue = romanNumerals.getValue(s[i + 1])
+            if ( currValue < nextValue) {
+                result -= currValue
+            } else {
+                result += currValue
+            }
+        } else {
+            result += currValue
+        }
+    }
+    return result
+}
