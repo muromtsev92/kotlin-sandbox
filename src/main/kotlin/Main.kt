@@ -40,6 +40,7 @@ fun main(args: Array<String>) {
     }
 
     println(checkIfPangram("thequickbrownfoxjumpsoverthelazydog"))
+    println(romanToInt("XXIV"))
 
 }
 
@@ -111,3 +112,17 @@ fun reverse(x: Int): Int{
     }
     return (sign + res).toInt()
 }
+
+fun romanToInt(s: String): Int =
+    s.mapIndexed { index, c ->
+        when (c) {
+            'I' -> if ("VX".contains(s.getOrNull(index + 1) ?: ' ')) -1 else 1
+            'V' -> 5
+            'X' -> if ("LC".contains(s.getOrNull(index + 1) ?: ' ')) -10 else 10
+            'L' -> 50
+            'C' -> if ("DM".contains(s.getOrNull(index + 1) ?: ' ')) -100 else 100
+            'D' -> 500
+            'M' -> 1000
+            else -> throw IllegalArgumentException("$c is not valid")
+        }
+    }.sum()
